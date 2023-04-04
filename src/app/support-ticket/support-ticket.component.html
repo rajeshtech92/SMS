@@ -1,0 +1,188 @@
+<div class='addBtn'>
+    <button type="button" class="btn btn-primary" (click)=" add()" style="float: right;" data-toggle="modal"
+        data-target="#exampleModal" data-whatever="@fat">Create Ticket</button>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <!-- <h4 class="modal-title" id="exampleModalLabel">New message</h4> -->
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="profileForm" (ngSubmit)=" onSubmit()">
+
+                    <label for="exampleFormControlInput1">Ticket Title</label>
+                    <input type="text" class="form-control" formControlName="ticket" id="exampleFormControlInput1"
+                        placeholder="Ticket Title Name">
+                    <br>
+                    <label for="exampleFormControlSelect1">Select A Project</label>
+                    <select class="form-control" formControlName="project" id="exampleFormControlSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <br>
+                    <label for="exampleFormControlSelect1">Select A Priority</label>
+                    <select class="form-control" formControlName="priority" id="exampleFormControlSelect1">
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
+                    </select>
+                    <br>
+                    <label for="exampleFormControlTextarea1">Description</label>
+                    <textarea class="form-control" formControlName="description" id="exampleFormControlTextarea1"
+                        rows="3"></textarea>
+                    <br>
+                    <label class="form-label" for="customFile">Select File</label>
+                    <input type="file" class="form-control" formControlName="file" id="customFile" />
+                    <br>
+                    <button type="submit" class="btn btn-primary updateBtn" (click)="  onSubmit()"
+                        [disabled]="!profileForm.valid" data-dismiss="modal" (click)="edit(id)"
+                        style="float: right;">{{actionBtn}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <table> -->
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="w3-panel w3-card  ">
+    <h1>Ticket List Details</h1>
+    <p style="float: right; display: flex;"></p>
+</div>
+<input type="text" class="form-control" formControlName="ticket" id="exampleFormControlInput1" placeholder="Search"
+    style="width: auto; float: right;">
+<div class="card-body">
+
+    <div class="container">
+        <br>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#home">Opened</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu1">Closed</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div id="home" class="container tab-pane active"><br>
+                <h3>Open Ticket</h3>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="summery" role="tabpanel"
+                        aria-labelledby="projectSummary">
+                        <div class="row clients-project-details">
+                            <div class="w3-panel w3-card ">
+                                <div class="col-sm-12">
+                                    <div class="card-body">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Title(bug list)</th>
+                                                    <th scope="col">Ticket Code</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Priority</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of data">
+                                                    <th scope="row">1</th>
+                                                    <td>{{item.ticket}}</td>
+                                                    <td>54646464</td>
+                                                    <td>Opened</td>
+                                                    <td>hight</td>
+                                                    <td style=" font-size:larger;">
+                                                        <span>
+                                                            <i class="fa fa-edit" aria-hidden="true"
+                                                                style="color: blue;" data-toggle="modal"
+                                                                data-target="#exampleModal" data-whatever="@fat"
+                                                                (click)="edit(item.id)" title="edit"></i> &nbsp;
+                                                            <i class="fa fa-trash" aria-hidden="true"
+                                                                style="color: red;" (click)="deleteRow(item.id)"
+                                                                title="delete"></i>
+                                                        </span>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>dropdown not work</td>
+                                                    <td>747478848484</td>
+                                                    <td>Opened</td>
+                                                    <td>low</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>filter problem</td>
+                                                    <td>6474898494949</td>
+                                                    <td>Opened</td>
+                                                    <td>high</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="menu1" class="container tab-pane fade"><br>
+                <h3>Close Ticket</h3>
+                <div class="w3-panel w3-card ">
+                    <div class="card-body project-activities">
+                        <div class="col-sm-12">
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Ticket Code</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Priority</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>54646464</td>
+                                        <td>Closed</td>
+                                        <td>hight</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>747478848484</td>
+                                        <td>Closed</td>
+                                        <td>low</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>6474898494949</td>
+                                        <td>Closed</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
