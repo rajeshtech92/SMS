@@ -1,0 +1,155 @@
+<!-- <div class="w3-panel w3-card " style="width: 100%; "> -->
+  <p class="heder" style="width: 100%;">
+    <mat-toolbar style="background-color: rgba(5, 68, 104, 0.637);">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+        title="show and hide side menu" (click)="expanded = !expanded">
+        <mat-icon style="color: azure;">menu</mat-icon>
+      </button>
+      <span class="example-spacer"></span>
+      <!-- <search> -->
+      <div class="col-xl-2 col-lg-4 col-md-4 col-sm-12 col-12 mb-3 pr-0">
+        <input wire:model.debounce.100ms="search" type="search" class="form-control" name="name"
+          placeholder="Search (ctrl + '/' to focus)" id="search" style="margin-top: 1rem;">
+      </div>
+      <!-- <notification> -->
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="btn-group pull-right top-head-dropdown">
+            <div class="btn btn-default " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-bell" style="font-size:25px;color: azure;" title="notification"></i>
+            </div>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li>
+                <a href="#" class="top-text-block">
+                  <div class="top-text-heading">You have <b>3 new themes</b> trending</div>
+                  <div class="top-text-light">15 minutes ago</div>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="top-text-block">
+                  <div class="top-text-heading">New asset recommendations in <b>Gaming Laptop</b></div>
+                  <div class="top-text-light">2 hours ago</div>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="top-text-block">
+                  <div class="top-text-heading">New asset recommendations in <b>5 themes</b></div>
+                  <div class="top-text-light">4 hours ago</div>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="top-text-block">
+                  <div class="top-text-heading">Assets specifications modified in themes</div>
+                  <div class="top-text-light">4 hours ago</div>
+                </a>
+              </li>
+              <!-- <li>
+                <div class="loader-topbar"></div>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- <heder dropdown> -->
+      <div class="img-case">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle button1" type="button" data-bs-toggle="dropdown"
+            title="client Profile" aria-expanded="false">
+            <a href="#"><i class="fa fa-user" aria-hidden="true" style="float: right;"></i>
+            </a>
+          </button>
+          <ul class="dropdown-menu">
+            <!-- <li><button class="dropdown-item" type="button">Account</button></li> -->
+            <li><button class="dropdown-item" type="button" data-toggle="modal" data-target=".bd-example-modal-sm"><i
+                  class="fa fa-user" aria-hidden="true" style="font-size: large"></i> Profile</button></li>
+            <li><button class="dropdown-item" type="button" [routerLink]="['/login']"><i class="fa fa-sign-out"
+                  aria-hidden="true" style="font-size: large;"></i>LogOut</button></li>
+          </ul>
+          <!-- <small model> -->
+            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-md" style="height: 30px;">
+                <div class="modal-content">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label style="font-size: 15px;">Email address</label>
+                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                    </div>
+                    <div class="col-md-6">
+                      <label style="font-size: 15px;">Phone number</label>
+                      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Number">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </mat-toolbar>
+  </p>
+<!-- </div> -->
+<div class="main-layout">
+  <aside class="sidebar" *ngIf="expanded">
+    <br>
+    <ng-container *ngFor="let item of menuItem">
+      <a class="side_list" routerLink="{{item.link}}">
+
+        <div class="row">
+          <div class="col-sm-2">
+            <P class="colors" style=" color: rgba(255, 255, 255, 0.808); ">
+              <mat-icon class="identity">{{item.icon}}</mat-icon>
+            </P>
+          </div>
+          <div class="col-sm-2" style="color: rgba(240, 248, 255, 0.842);">
+            <span class="sidebar_label " style="font-family: monospace;" > {{item.label}}</span>
+          </div>
+        </div>
+
+
+      </a>
+    </ng-container>
+  </aside>
+  <div class="example-container">
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="footer">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h4 class="modal-title" id="exampleModalLabel" style="font-weight: 700;">Profile</h4>
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+       <div class="row">
+         <div class="col-md-6">
+           <label style="font-size: 15px;">Email address</label>
+           <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+         </div>
+         <div class="col-md-6">
+           <label style="font-size: 15px;">Phone number</label>
+           <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Number">
+         </div>
+       </div>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-primary">Save</button>
+       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+     </div>
+   </div>
+ </div>
+</div> 
+
+
+

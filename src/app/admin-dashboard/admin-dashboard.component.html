@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="w3-panel w3-card" style="margin-top: auto;">
+  <h1> Dashboard </h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="w3-panel w3-card-2" style="width: 100%;">
+        <h2>Project Status</h2>
+        <div class="chart-wrapper">
+          <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+            [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+          </canvas>
+        </div>
+      </div>
+    </div>
+    <!-- <invoice> -->
+    <div class="col-6">
+      <div class="w3-panel w3-card-2" style="width: 100%;">
+        <h2>Invoice Status</h2>
+        <div class="chart-wrapper">
+          <canvas baseChart [data]="pieChartDatas" [labels]="pieChartLabel" [chartType]="pieChartTypes"
+            [options]="pieChartOption" [plugins]="pieChartPlugin" [legend]="pieChartLegends">
+          </canvas>
+        </div>
+      </div>
+    </div>
+    <!-- <invoice> -->
+  </div>
+</div>
+
+

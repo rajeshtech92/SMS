@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="w3-panel w3-card  " style="margin-top: auto;"> <h1> Invoices </h1>
+<div style="float: right; ">
+<p>
+<mat-checkbox [formControl]="disableSelect">Disable select</mat-checkbox>
+  </p>
+  <h4>Status</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose an option</mat-label>
+    <mat-select [disabled]="disableSelect.value">
+      <mat-option value="option1">All</mat-option>
+      <mat-option value="option2" >SENT </mat-option>
+      <mat-option value="option3">PAID</mat-option>
+    </mat-select>
+  </mat-form-field></div>
+  <div style="float: right;margin-right: 7px;">
+    <p>
+    <mat-checkbox [formControl]="disableSelect">Disable select</mat-checkbox>
+      </p>
+      <h4>Sort By</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose an option</mat-label>
+        <mat-select [disabled]="disableSelect.value">
+          <mat-option value="option1">All</mat-option>
+          <mat-option value="option2" >Due Date(Asc) </mat-option>
+          <mat-option value="option3">Due Date(Desc)</mat-option>
+        </mat-select>
+      </mat-form-field></div>
+</div>
+<div class="w3-panel w3-card  " style="text-align: center;"> <h1> No Invoices Available </h1></div>
